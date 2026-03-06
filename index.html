@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verdant Drop | Pure Essential Oils</title>
+  <style>
+    :root {
+      --cream-50: #f6f2e8;
+      --cream-100: #ece4d3;
+      --sage-200: #cad6c3;
+      --sage-400: #8aa48d;
+      --forest-600: #4d6a50;
+      --forest-700: #39523c;
+      --earth-400: #c9ab8f;
+      --earth-600: #9b775f;
+      --text-900: #263327;
+      --text-700: #4b5d4d;
+      --white: #ffffff;
+      --shadow-soft: 0 12px 36px rgba(56, 76, 57, 0.13);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --max-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: var(--text-900);
+      background:
+        radial-gradient(circle at 10% 5%, rgba(202, 214, 195, 0.4), transparent 35%),
+        radial-gradient(circle at 90% 15%, rgba(201, 171, 143, 0.2), transparent 40%),
+        linear-gradient(160deg, #faf8f1 0%, #f2ede1 55%, #efe7d7 100%);
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(var(--max-width), 92vw);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-title {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      margin-bottom: 0.75rem;
+      color: var(--forest-700);
+      letter-spacing: 0.01em;
+    }
+
+    .section-subtitle {
+      color: var(--text-700);
+      margin-bottom: 2rem;
+      max-width: 62ch;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(8px);
+      background: rgba(246, 242, 232, 0.86);
+      border-bottom: 1px solid rgba(77, 106, 80, 0.14);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 700;
+      color: var(--forest-700);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.92rem;
+    }
+
+    .brand-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: linear-gradient(145deg, var(--sage-400), var(--forest-600));
+      display: grid;
+      place-items: center;
+      color: var(--white);
+      font-size: 1rem;
+      box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text-700);
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--forest-700);
+    }
+
+    .hero {
+      padding: 4.5rem 0 3.8rem;
+    }
+
+    .hero-wrap {
+      display: grid;
+      gap: 2.2rem;
+      grid-template-columns: 1.2fr 1fr;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-family: "Georgia", "Times New Roman", serif;
+      font-size: clamp(2.1rem, 5.2vw, 4rem);
+      line-height: 1.08;
+      color: var(--forest-700);
+      margin-bottom: 1rem;
+      max-width: 13ch;
+    }
+
+    .hero p {
+      color: var(--text-700);
+      max-width: 58ch;
+      margin-bottom: 1.6rem;
+      font-size: 1.02rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 0.9rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      border: 0;
+      border-radius: 999px;
+      padding: 0.82rem 1.35rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-primary {
+      color: var(--white);
+      background: linear-gradient(135deg, var(--forest-600), var(--forest-700));
+      box-shadow: 0 8px 20px rgba(57, 82, 60, 0.24);
+    }
+
+    .btn-ghost {
+      color: var(--forest-700);
+      background: rgba(255, 255, 255, 0.65);
+      border: 1px solid rgba(77, 106, 80, 0.24);
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 24px rgba(57, 82, 60, 0.2);
+    }
+
+    .hero-card {
+      background: linear-gradient(170deg, rgba(255, 255, 255, 0.85), rgba(236, 228, 211, 0.72));
+      border: 1px solid rgba(77, 106, 80, 0.12);
+      border-radius: var(--radius-lg);
+      padding: 1.3rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-visual {
+      border-radius: calc(var(--radius-lg) - 8px);
+      min-height: 370px;
+      background:
+        radial-gradient(circle at 25% 22%, rgba(138, 164, 141, 0.28), transparent 42%),
+        radial-gradient(circle at 75% 85%, rgba(155, 119, 95, 0.18), transparent 36%),
+        linear-gradient(145deg, #f5f0e3, #e4eddc 58%, #dde7d3 100%);
+      padding: 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .bottle {
+      position: absolute;
+      bottom: 1.2rem;
+      width: 90px;
+      border-radius: 22px 22px 14px 14px;
+      background: linear-gradient(180deg, #8f643f 0%, #6f4c31 52%, #5a3e2a 100%);
+      box-shadow: 0 22px 32px rgba(56, 38, 24, 0.25);
+    }
+
+    .bottle::before {
+      content: "";
+      position: absolute;
+      top: -24px;
+      left: 29px;
+      width: 30px;
+      height: 26px;
+      border-radius: 10px 10px 4px 4px;
+      background: linear-gradient(180deg, #2f3a2f, #232c24);
+    }
+
+    .bottle::after {
+      content: "";
+      position: absolute;
+      top: 32px;
+      left: 10px;
+      width: 70px;
+      height: 48px;
+      border-radius: 10px;
+      background: rgba(245, 240, 228, 0.88);
+    }
+
+    .bottle.one {
+      height: 180px;
+      left: 2rem;
+      transform: rotate(-4deg);
+    }
+
+    .bottle.two {
+      height: 215px;
+      left: 8.4rem;
+      transform: rotate(2deg);
+    }
+
+    .bottle.three {
+      height: 165px;
+      left: 15rem;
+      transform: rotate(-1deg);
+    }
+
+    .leaf {
+      position: absolute;
+      border-radius: 100% 0 100% 0;
+      transform: rotate(20deg);
+      background: linear-gradient(160deg, rgba(138, 164, 141, 0.75), rgba(77, 106, 80, 0.82));
+      filter: drop-shadow(0 8px 10px rgba(77, 106, 80, 0.2));
+    }
+
+    .leaf.a {
+      width: 130px;
+      height: 66px;
+      right: -20px;
+      top: 25px;
+    }
+
+    .leaf.b {
+      width: 102px;
+      height: 54px;
+      right: 24px;
+      top: 82px;
+      transform: rotate(-8deg);
+    }
+
+    .showcase-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .oil-card {
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(77, 106, 80, 0.12);
+      border-radius: var(--radius-md);
+      padding: 1rem;
+      box-shadow: 0 10px 24px rgba(63, 89, 65, 0.08);
+      transition: transform 0.2s ease;
+    }
+
+    .oil-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .oil-top {
+      height: 130px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 0.9rem;
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      color: var(--forest-700);
+      background: linear-gradient(130deg, rgba(202, 214, 195, 0.42), rgba(236, 228, 211, 0.78));
+    }
+
+    .oil-card h3 {
+      font-size: 1.15rem;
+      color: var(--forest-700);
+      margin-bottom: 0.35rem;
+    }
+
+    .oil-card p {
+      color: var(--text-700);
+      font-size: 0.95rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--forest-700);
+      background: rgba(138, 164, 141, 0.2);
+      border: 1px solid rgba(77, 106, 80, 0.2);
+      border-radius: 999px;
+      padding: 0.3rem 0.7rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .benefit {
+      background: linear-gradient(165deg, rgba(255, 255, 255, 0.8), rgba(236, 228, 211, 0.6));
+      border: 1px solid rgba(77, 106, 80, 0.12);
+      border-radius: var(--radius-md);
+      padding: 1.1rem;
+    }
+
+    .benefit h4 {
+      color: var(--forest-700);
+      margin-bottom: 0.45rem;
+      font-size: 1.08rem;
+    }
+
+    .benefit p {
+      color: var(--text-700);
+      font-size: 0.95rem;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .quote {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(77, 106, 80, 0.12);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.1rem;
+      box-shadow: 0 10px 24px rgba(63, 89, 65, 0.08);
+    }
+
+    .quote p {
+      color: var(--text-700);
+      font-size: 0.96rem;
+      margin-bottom: 0.7rem;
+    }
+
+    .quote strong {
+      color: var(--forest-700);
+      font-size: 0.92rem;
+    }
+
+    .contact-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.3rem;
+      align-items: start;
+    }
+
+    .contact-card,
+    .form-card {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(77, 106, 80, 0.16);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-card p {
+      color: var(--text-700);
+      margin-bottom: 1rem;
+      max-width: 42ch;
+    }
+
+    .contact-meta {
+      display: grid;
+      gap: 0.5rem;
+      color: var(--forest-700);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .form-grid {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .form-grid label {
+      font-size: 0.9rem;
+      color: var(--forest-700);
+      font-weight: 600;
+    }
+
+    .input,
+    textarea {
+      width: 100%;
+      border: 1px solid rgba(77, 106, 80, 0.24);
+      background: #fffefb;
+      border-radius: 12px;
+      padding: 0.72rem 0.8rem;
+      font: inherit;
+      color: var(--text-900);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--forest-600);
+      box-shadow: 0 0 0 3px rgba(138, 164, 141, 0.2);
+    }
+
+    textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .footer {
+      text-align: center;
+      color: var(--text-700);
+      font-size: 0.88rem;
+      padding: 2.2rem 0 2.6rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-wrap,
+      .contact-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .showcase-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .benefits-grid,
+      .testimonials {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 300px;
+      }
+
+      .bottle.one {
+        left: 1rem;
+      }
+
+      .bottle.two {
+        left: 7rem;
+      }
+
+      .bottle.three {
+        left: 12.4rem;
+      }
+    }
+
+    @media (max-width: 620px) {
+      .section {
+        padding: 3.8rem 0;
+      }
+
+      .nav {
+        min-height: 66px;
+      }
+
+      .nav-links {
+        gap: 0.7rem;
+      }
+
+      .nav-links a {
+        font-size: 0.88rem;
+      }
+
+      .showcase-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 260px;
+      }
+
+      .bottle {
+        width: 72px;
+      }
+
+      .bottle.one {
+        height: 145px;
+        left: 0.6rem;
+      }
+
+      .bottle.two {
+        height: 175px;
+        left: 5.5rem;
+      }
+
+      .bottle.three {
+        height: 130px;
+        left: 10rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <span class="brand-mark">❋</span>
+        Verdant Drop
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#oils">Oils</a>
+        <a href="#benefits">Benefits</a>
+        <a href="#stories">Testimonials</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-wrap">
+        <div>
+          <h1>Nature in every drop, calm in every breath.</h1>
+          <p>
+            Discover small-batch essential oils crafted from botanicals grown with care. From morning focus to evening unwind, bring gentle rituals into your daily rhythm.
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn-primary" href="#oils">Shop Signature Oils</a>
+            <a class="btn btn-ghost" href="#contact">Join the Newsletter</a>
+          </div>
+        </div>
+
+        <div class="hero-card" aria-hidden="true">
+          <div class="hero-visual">
+            <span class="leaf a"></span>
+            <span class="leaf b"></span>
+            <span class="bottle one"></span>
+            <span class="bottle two"></span>
+            <span class="bottle three"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="oils">
+      <div class="container">
+        <h2 class="section-title">Our Essential Oil Collection</h2>
+        <p class="section-subtitle">
+          A curated lineup of pure oils and blends designed for mood, mindfulness, and natural home aromatherapy.
+        </p>
+
+        <div class="showcase-grid">
+          <article class="oil-card">
+            <div class="oil-top">🌿</div>
+            <h3>Lavender Mist</h3>
+            <p>Floral and soft. Ideal for evening relaxation and deeper rest rituals.</p>
+            <span class="pill">Calm + Sleep</span>
+          </article>
+
+          <article class="oil-card">
+            <div class="oil-top">🍋</div>
+            <h3>Lemon Zest</h3>
+            <p>Fresh citrus aroma that brightens mood and refreshes your space instantly.</p>
+            <span class="pill">Lift + Clarity</span>
+          </article>
+
+          <article class="oil-card">
+            <div class="oil-top">🌲</div>
+            <h3>Eucalyptus Pure</h3>
+            <p>Clean and crisp notes for breathing comfort and a spa-like atmosphere.</p>
+            <span class="pill">Breathe + Reset</span>
+          </article>
+
+          <article class="oil-card">
+            <div class="oil-top">🌼</div>
+            <h3>Golden Calm Blend</h3>
+            <p>A grounding blend of chamomile and cedarwood for slow, restorative moments.</p>
+            <span class="pill">Balance + Peace</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="benefits">
+      <div class="container">
+        <h2 class="section-title">Why Choose Verdant Drop</h2>
+        <p class="section-subtitle">
+          We source responsibly, distill carefully, and formulate each bottle to support your well-being naturally.
+        </p>
+
+        <div class="benefits-grid">
+          <article class="benefit">
+            <h4>100% Pure Ingredients</h4>
+            <p>No fillers or synthetic fragrance. Just authentic plant extracts and transparent sourcing.</p>
+          </article>
+
+          <article class="benefit">
+            <h4>Mindful Crafting</h4>
+            <p>Small-batch production preserves aromatic complexity and consistent quality in every bottle.</p>
+          </article>
+
+          <article class="benefit">
+            <h4>Daily Ritual Support</h4>
+            <p>From focus and energy to sleep and stress relief, our oils fit naturally into your routine.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="stories">
+      <div class="container">
+        <h2 class="section-title">Loved by Our Community</h2>
+        <p class="section-subtitle">Real routines, real feedback from customers who use our oils every day.</p>
+
+        <div class="testimonials">
+          <article class="quote">
+            <p>"Lavender Mist became my nightly reset. Two drops in my diffuser and I sleep so much better."</p>
+            <strong>Amelia R. - Wellness Coach</strong>
+          </article>
+
+          <article class="quote">
+            <p>"The citrus blend makes my studio feel clean and energized without being overpowering."</p>
+            <strong>Jon M. - Interior Designer</strong>
+          </article>
+
+          <article class="quote">
+            <p>"Beautiful quality and packaging. It feels like bringing a little spa ritual home."</p>
+            <strong>Nina K. - Yoga Instructor</strong>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="contact">
+      <div class="container contact-wrap">
+        <article class="contact-card">
+          <h2 class="section-title">Stay In the Loop</h2>
+          <p>
+            Get aromatherapy tips, seasonal blends, and first access to limited releases. We send thoughtful updates, never spam.
+          </p>
+          <div class="contact-meta">
+            <span>Email: hello@verdantdrop.com</span>
+            <span>Phone: +1 (555) 243-9781</span>
+            <span>Studio: Cedar Lane, Portland, OR</span>
+          </div>
+        </article>
+
+        <form class="form-card" action="#" method="post">
+          <div class="form-grid">
+            <label for="name">Your Name</label>
+            <input class="input" id="name" name="name" type="text" placeholder="Olivia Harper" required />
+
+            <label for="email">Email Address</label>
+            <input class="input" id="email" name="email" type="email" placeholder="you@example.com" required />
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Tell us what oils you love..."></textarea>
+
+            <button class="btn btn-primary" type="submit">Subscribe & Contact</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© 2026 Verdant Drop. Crafted for natural calm.</div>
+  </footer>
+</body>
+</html>
